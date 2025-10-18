@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Daniel Le">
+
+    <script>
+
+        // Initialize an array to store names
+        let contacts = ['Arnold', 'Sly', 'Dwayne', 'Vin', 'JCVD', 'Steven'];
+
+
+    </script>
+    
+    <title>Contacts</title>
+  </head>
+  <body>
+    <h1 class="grid">Contacts</h1>
+    <div class="grid">
+        <table id="print-contact">
+            <tr>
+                <th>Slot #</th>
+                <th>Number</th>
+            </tr>
+
+        </table>
+
+        
+    </div>
+    
+    <div class="grid">
+
+        <button type="button" id="button" 
+                onclick="
+                        // Logic to make the function works
+                        // Initialize variables
+                        let continueSearch;
+                        let userInput;
+                        let getContact;
+                        let search;
+
+                        // Prompt starts
+                        do{
+
+                            // Prompt user input
+                            search = true;
+                            userInput = prompt('Please select a slot number:');
+                            
+                            // Start the process to search for name
+                            while(search === true){
+
+                                getContact = contacts[userInput];
+
+                                // If the contact exists, it will print out what the user have selected
+                                if (userInput >= 0 && userInput < contacts.length){
+                                    alert(`You selected ${getContact}.`);
+                                    search = false;
+                                }
+
+                                // If the contact doesn't exist, it will prompt user to try again
+                                else{
+                                    userInput = prompt('The name you are looking for doesn\'t exit. Please try again.');
+                                }
+                                
+                            }
+                            // Asks if the user wants to select a different name
+                            continueSearch = prompt('Would you like to select a different name? (y/n)');
+                        }while (continueSearch.toLowerCase() === 'y');"
+                
+        >Select Contact
+        </button>
+
+    </div>
+
+    <script>
+
+        for (let i = 0; i < contacts.length; i++){
+            document.getElementById('print-contact').innerHTML += `<tr><td>${i}</td><td>${contacts[i]}</td></tr>`;
+        }
+
+    </script>
+
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: auto;
+            justify-content: center;
+        }
+
+        .grid {
+
+            /* border: double cornflowerblue; */
+            margin-top: 2%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        div{
+            margin-left: -23%;
+            width: 300%;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        #print-contact, td, th {
+            border: 1px solid black;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10%;
+        }
+
+        th {
+            background-color: black;
+            color: white;
+        }
+
+        #button{
+            background-color: black;
+            font-weight: bold;
+            color: white;
+            padding: 5%;
+            border: none;
+            margin-top: 10%;
+            margin-left: 10%;
+        }
+
+    </style>
+ </body>
+</html>
